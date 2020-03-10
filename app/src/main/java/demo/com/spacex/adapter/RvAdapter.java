@@ -27,8 +27,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
         notifyDataSetChanged();
     }
 
-
-
     @NonNull
     @Override
 

@@ -18,9 +18,6 @@ public class Links {
     @SerializedName("reddit_launch")
     @Expose
     private String redditLaunch;
-    @SerializedName("reddit_recovery")
-    @Expose
-    private Object redditRecovery;
     @SerializedName("reddit_media")
     @Expose
     private String redditMedia;
@@ -73,14 +70,6 @@ public class Links {
 
     public void setRedditLaunch(String redditLaunch) {
         this.redditLaunch = redditLaunch;
-    }
-
-    public Object getRedditRecovery() {
-        return redditRecovery;
-    }
-
-    public void setRedditRecovery(Object redditRecovery) {
-        this.redditRecovery = redditRecovery;
     }
 
     public String getRedditMedia() {
@@ -138,4 +127,5 @@ public class Links {
     public void setFlickrImages(List<String> flickrImages) {
         this.flickrImages = flickrImages;
     }
+
 }
