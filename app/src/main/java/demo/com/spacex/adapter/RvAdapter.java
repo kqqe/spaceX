@@ -1,12 +1,18 @@
 package demo.com.spacex.adapter;
 
+import android.app.Fragment;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +23,7 @@ import demo.com.spacex.pojo.Launches;
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
 
     private List<Launches> launches = new ArrayList<Launches>();
+    private Context context;
 
     public List<Launches> getLaunches() {
         return launches;
@@ -25,6 +32,10 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
     public void setLaunches(List<Launches> launches) {
         this.launches = launches;
         notifyDataSetChanged();
+    }
+
+    public RvAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -40,6 +51,10 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
         Launches launche = launches.get(position);
         holder.capsuleSerial.setText(launche.getMissionName());
         holder.capsuleId.setText(launche.getLaunchYear());
+        Glide.with(context)
+                .load(launche.getLinks().getMissionPatchSmall())
+                //.diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
     }
 
     @Override
@@ -50,9 +65,11 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
     class RvViewHolder extends RecyclerView.ViewHolder {
         private TextView capsuleSerial;
         private TextView capsuleId;
+        private ImageView imageView;
 
         public RvViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageView = itemView.findViewById(R.id.imageViewSpace);
             capsuleSerial = itemView.findViewById(R.id.textViewSerial);
             capsuleId = itemView.findViewById(R.id.textViewId);
         }

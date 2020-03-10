@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerViewCapsule = findViewById(R.id.recyclerViewСapsule);
-        adapter = new RvAdapter();
+        adapter = new RvAdapter(this);
         recyclerViewCapsule.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCapsule.setAdapter(adapter);
         ApiFactory apiFactory = ApiFactory.getInstance();
