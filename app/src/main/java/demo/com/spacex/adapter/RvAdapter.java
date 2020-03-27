@@ -49,8 +49,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RvViewHolder holder, int position) {
         Launches launche = launches.get(position);
-        holder.capsuleSerial.setText(launche.getMissionName());
-        holder.capsuleId.setText(launche.getLaunchYear());
+        holder.nameSpace.setText(launche.getMissionName());
+        holder.yearSpace.setText(launche.getLaunchYear());
         Glide.with(context)
                 .load(launche.getLinks().getMissionPatchSmall())
                 //.diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -63,15 +63,15 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
     }
 
     class RvViewHolder extends RecyclerView.ViewHolder {
-        private TextView capsuleSerial;
-        private TextView capsuleId;
+        private TextView nameSpace;
+        private TextView yearSpace;
         private ImageView imageView;
 
         public RvViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageViewSpace);
-            capsuleSerial = itemView.findViewById(R.id.textViewSerial);
-            capsuleId = itemView.findViewById(R.id.textViewId);
+            nameSpace = itemView.findViewById(R.id.textViewSerial);
+            yearSpace = itemView.findViewById(R.id.textViewId);
         }
     }
 }
